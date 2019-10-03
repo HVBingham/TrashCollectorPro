@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MyTrashCollector.Models;
+using Microsoft.AspNet.Identity;
 
 namespace MyTrashCollector.Controllers
 {
@@ -50,10 +51,12 @@ namespace MyTrashCollector.Controllers
         {
             try
             {
+                var user = User.Identity.GetUserId();
+                customer.UserId = user;
                 context.Customers.Add(customer);
                 context.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Details");
             }
             catch
             {
