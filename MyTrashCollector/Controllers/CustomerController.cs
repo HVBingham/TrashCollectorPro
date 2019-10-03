@@ -1,38 +1,57 @@
 ﻿using System;
+using System.Data;
+using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using MyTrashCollector.Models;
 
 namespace MyTrashCollector.Controllers
 {
     public class CustomerController : Controller
     {
-        // GET: Customer
+        private ApplicationDbContext context;
+        public CustomerController()
+        {
+            context = new ApplicationDbContext();
+        }
         public ActionResult Index()
         {
-            return View();
+            
+            return View(context.Customers.ToList());
         }
 
-        // GET: Customer/Details/5
-        public ActionResult Details(int id)
+        
+        public ActionResult Details(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Customer customer = context.Customers.Find(id);
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+            return View(customer);
         }
 
-        // GET: Customer/Create
+        
         public ActionResult Create()
         {
-            return View();
+            Customer newCutsomer = new Customer();
+            return View(newCutsomer);
         }
 
-        // POST: Customer/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Customer customer)
         {
             try
             {
-                // TODO: Add insert logic here
+                context.Customers.Add(customer);
+                context.SaveChanges();
 
                 return RedirectToAction("Index");
             }
@@ -42,9 +61,10 @@ namespace MyTrashCollector.Controllers
             }
         }
 
-        // GET: Customer/Edit/5
+        
         public ActionResult Edit(int id)
         {
+
             return View();
         }
 
