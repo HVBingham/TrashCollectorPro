@@ -25,17 +25,9 @@ namespace MyTrashCollector.Controllers
         }
 
         
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Customer customer = context.Customers.Find(id);
-            if (customer == null)
-            {
-                return HttpNotFound();
-            }
+            Customer customer = context.Customers.Where(c=>c.Id==id).SingleOrDefault();
             return View(customer);
         }
 
@@ -56,7 +48,7 @@ namespace MyTrashCollector.Controllers
                 context.Customers.Add(customer);
                 context.SaveChanges();
 
-                return RedirectToAction("Details");
+                return RedirectToAction("Details", "Customer", new { id = customer.Id });
             }
             catch
             {
@@ -78,9 +70,15 @@ namespace MyTrashCollector.Controllers
             try
             {
                 Customer editCustmer = context.Customers.Find(id);
-
-
-                return RedirectToAction("Index");
+                editCustmer.FirstName = customer.FirstName;
+                editCustmer.LastName = customer.LastName;
+                editCustmer.StreetAddress = customer.LastName;
+                editCustmer.City = customer.City;
+                editCustmer.State = customer.State;
+                editCustmer.ZipCode = customer.ZipCode;
+                editCustmer.Day = customer.Day;
+                context.SaveChanges();
+                return RedirectToAction("Details", "Customer", new { id = editCustmer.Id });
             }
             catch
             {
@@ -91,16 +89,20 @@ namespace MyTrashCollector.Controllers
         // GET: Customer/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            Customer removeCustomer = context.Customers.Where(c => c.Id == id).SingleOrDefault();
+
+            return View(removeCustomer);
         }
 
         // POST: Customer/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, Customer customer)
         {
             try
             {
-                // TODO: Add delete logic here
+               
+                context.Customers.Remove(context.Customers.Find(id));
+                context.SaveChanges();
 
                 return RedirectToAction("Index");
             }

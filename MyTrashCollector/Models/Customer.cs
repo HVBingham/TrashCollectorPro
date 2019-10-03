@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -23,6 +24,8 @@ namespace MyTrashCollector.Models
         public string City { get; set; }
         public string State { get; set; }
         public int  ZipCode { get; set; }
+        [DisplayName("Chose A Day Of The Week")]
+        public string Day { get; set; }
         public double Balance { get; set; }
         
     }
