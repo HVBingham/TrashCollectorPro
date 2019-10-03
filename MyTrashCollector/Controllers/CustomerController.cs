@@ -64,17 +64,18 @@ namespace MyTrashCollector.Controllers
         
         public ActionResult Edit(int id)
         {
-
-            return View();
+            Customer editCustomer = context.Customers.Where(c => c.Id == id).SingleOrDefault();
+            return View(editCustomer);
         }
 
         // POST: Customer/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Customer customer)
         {
             try
             {
-                // TODO: Add update logic here
+                Customer editCustmer = context.Customers.Find(id);
+
 
                 return RedirectToAction("Index");
             }
