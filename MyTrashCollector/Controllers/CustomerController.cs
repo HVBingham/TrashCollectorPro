@@ -77,6 +77,9 @@ namespace MyTrashCollector.Controllers
                 editCustmer.State = customer.State;
                 editCustmer.ZipCode = customer.ZipCode;
                 editCustmer.Day = customer.Day;
+                editCustmer.StartDay = customer.StartDay;
+                editCustmer.EndDate = customer.EndDate;
+                editCustmer.ExtraPick = customer.ExtraPick;
                 context.SaveChanges();
                 return RedirectToAction("Details", "Customer", new { id = editCustmer.Id });
             }
