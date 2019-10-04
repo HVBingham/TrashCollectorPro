@@ -19,6 +19,7 @@ namespace MyTrashCollector.Models
         public string FirstName { get; set; }
         [Display(Name ="Last Name")]
         public string LastName { get; set; }
+        [Display(Name = "Street Address")]
         public string StreetAddress { get; set; }
        
         public string City { get; set; }
@@ -26,6 +27,12 @@ namespace MyTrashCollector.Models
         public int  ZipCode { get; set; }
         [DisplayName("Chose A Day Of The Week")]
         public string Day { get; set; }
+        [DisplayName ("Start Date for Pick-up")]
+        public string StartDay { get; set; }
+        [DisplayName("End Date of Pick-ups")]
+        public string EndDate { get; set; }
+        [DisplayName("Extra Added Pick-up")]
+        public string ExtraPick { get; set; }
         public double Balance { get; set; }
         
     }
