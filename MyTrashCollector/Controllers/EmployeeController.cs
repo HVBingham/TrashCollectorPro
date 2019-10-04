@@ -17,8 +17,10 @@ namespace MyTrashCollector.Controllers
         }
         public ActionResult Index()
         {
-             
-            return View();
+            var employeeId = User.Identity.GetUserId();
+            Employee employee = context.Employees.Where(e => e.UserId == employeeId).SingleOrDefault();
+            var listOfDayCustomers = context.Customers.Where(c => c.ZipCode == employee.ZipCode && c.Day == DateTime.Today.DayOfWeek.ToString());
+             return View(listOfDayCustomers);
         }
 
         // GET: Employee/Details/5

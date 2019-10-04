@@ -34,6 +34,7 @@ namespace MyTrashCollector.Models
         [DisplayName("Extra Added Pick-up")]
         public string ExtraPick { get; set; }
         public double Balance { get; set; }
-        
+        public bool PickConfirmed { get; set; }
+
     }
 }
