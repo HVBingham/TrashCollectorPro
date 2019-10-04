@@ -66,9 +66,13 @@ namespace MyTrashCollector.Controllers
         {
             try
             {
-                
+                Employee editEmployee = context.Employees.Find(id);
+                editEmployee.FirstName = employee.FirstName;
+                editEmployee.LastName = employee.LastName;
+                editEmployee.ZipCode = employee.ZipCode;
+                context.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Details","Employee",new { id = employee.Id });
             }
             catch
             {
@@ -79,17 +83,17 @@ namespace MyTrashCollector.Controllers
         // GET: Employee/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            Employee removeEmployee = context.Employees.Where(e => e.Id == id).SingleOrDefault();
+            return View(removeEmployee);
         }
 
         // POST: Employee/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, Employee employee)
         {
             try
             {
-                // TODO: Add delete logic here
-
+                context.Employees.Remove(context.Employees.Find(id));
                 return RedirectToAction("Index");
             }
             catch
