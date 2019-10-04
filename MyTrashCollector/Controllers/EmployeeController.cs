@@ -17,8 +17,8 @@ namespace MyTrashCollector.Controllers
         }
         public ActionResult Index()
         {
-
-            return View(context.Employees.ToList());
+             
+            return View();
         }
 
         // GET: Employee/Details/5
@@ -94,7 +94,7 @@ namespace MyTrashCollector.Controllers
             try
             {
                 context.Employees.Remove(context.Employees.Find(id));
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             catch
             {

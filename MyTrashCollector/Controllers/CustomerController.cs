@@ -107,7 +107,7 @@ namespace MyTrashCollector.Controllers
                 context.Customers.Remove(context.Customers.Find(id));
                 context.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
             catch
             {
