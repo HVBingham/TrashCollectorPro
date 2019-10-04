@@ -3,38 +3,49 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MyTrashCollector.Models;
+using Microsoft.AspNet.Identity;
 
 namespace MyTrashCollector.Controllers
 {
     public class EmployeeController : Controller
     {
-        // GET: Employee
+        ApplicationDbContext context;
+        public EmployeeController()
+        {
+            context = new ApplicationDbContext();
+        }
         public ActionResult Index()
         {
-            return View();
+
+            return View(context.Employees.ToList());
         }
 
         // GET: Employee/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            Employee employee = context.Employees.Where(e => e.Id == id).SingleOrDefault();
+            return View(employee);
         }
 
         // GET: Employee/Create
         public ActionResult Create()
         {
-            return View();
+            Employee newEmpolyee = new Employee();
+            return View(newEmpolyee);
         }
 
         // POST: Employee/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Employee employee)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                var user = User.Identity.GetUserId();
+                employee.UserId = user;
+                context.Employees.Add(employee);
+                context.SaveChanges();
+                return RedirectToAction("Details", "Employee", new { id = employee.Id });
             }
             catch
             {
@@ -45,16 +56,17 @@ namespace MyTrashCollector.Controllers
         // GET: Employee/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            Employee editEmployee = context.Employees.Where(e => e.Id == id).SingleOrDefault();
+            return View(editEmployee);
         }
 
         // POST: Employee/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Employee employee)
         {
             try
             {
-                // TODO: Add update logic here
+                
 
                 return RedirectToAction("Index");
             }
