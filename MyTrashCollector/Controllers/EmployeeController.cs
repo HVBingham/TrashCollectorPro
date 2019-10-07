@@ -19,7 +19,7 @@ namespace MyTrashCollector.Controllers
         {
             var employeeId = User.Identity.GetUserId();
             Employee employee = context.Employees.Where(e => e.UserId == employeeId).SingleOrDefault();
-            var listOfDayCustomers = context.Customers.Where(c => c.ZipCode == employee.ZipCode && c.Day == DateTime.Today.DayOfWeek.ToString());
+            var listOfDayCustomers = context.Customers.Where(c => c.ZipCode == employee.ZipCode && c.Day == DateTime.Today.DayOfWeek.ToString() && c.PickConfirmed == true);
              return View(listOfDayCustomers);
         }
 
@@ -30,9 +30,9 @@ namespace MyTrashCollector.Controllers
             return View(employee);
         }
 
-        public ActionResult Confimation(int id)
+        public ActionResult Confirmation(int id)
         {
-            var customer = context.Customers.Find(id);
+            Customer customer = context.Customers.Where(c=>c.Id==id).SingleOrDefault();
            return View(customer);
         }
         [HttpPost]

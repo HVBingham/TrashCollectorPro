@@ -1,7 +1,7 @@
 ﻿@model MyTrashCollector.Models.Customer
 
 @{
-    Layout = null;
+    ViewBag.Title="Delete";
 }
 
 <!DOCTYPE html>
@@ -43,13 +43,7 @@
                 @Html.DisplayFor(model => model.ZipCode)
             </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.PickConfirmed)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.PickConfirmed)
-            </dd>
+          
     
         </dl>
     
