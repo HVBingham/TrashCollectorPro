@@ -30,6 +30,22 @@ namespace MyTrashCollector.Controllers
             return View(employee);
         }
 
+        public ActionResult Confimation(int id)
+        {
+            var customer = context.Customers.Find(id);
+           return View(customer);
+        }
+        [HttpPost]
+        public ActionResult Confirmation(Customer customer)
+        {
+            var updateCustomer = context.Customers.Find(customer.Id);
+            updateCustomer.Balance += 75;
+            updateCustomer.PickConfirmed = true;
+            context.SaveChanges();
+            return RedirectToAction("Index", "Employee");
+
+        }
+
         // GET: Employee/Create
         public ActionResult Create()
         {
