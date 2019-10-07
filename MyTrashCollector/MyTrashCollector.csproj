@@ -199,6 +199,10 @@
     <Compile Include="Migrations\201910041557112_AddedBooleanforCustomerModel.Designer.cs">
       <DependentUpon>201910041557112_AddedBooleanforCustomerModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910071335155_addedbooleanforpickups.cs" />
+    <Compile Include="Migrations\201910071335155_addedbooleanforpickups.Designer.cs">
+      <DependentUpon>201910071335155_addedbooleanforpickups.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -309,6 +313,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910041557112_AddedBooleanforCustomerModel.resx">
       <DependentUpon>201910041557112_AddedBooleanforCustomerModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910071335155_addedbooleanforpickups.resx">
+      <DependentUpon>201910071335155_addedbooleanforpickups.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

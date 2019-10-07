@@ -19,7 +19,7 @@ namespace MyTrashCollector.Models
         [Display(Name ="Last Name")]
         public string LastName { get; set; }
         public int ZipCode { get; set; }
-        
-
+        [Display(Name ="Confirm Pick Up")]
+        public bool PickUpConfimation { get; set; }
     }
 }
