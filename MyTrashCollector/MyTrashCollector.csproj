@@ -203,6 +203,22 @@
     <Compile Include="Migrations\201910071335155_addedbooleanforpickups.Designer.cs">
       <DependentUpon>201910071335155_addedbooleanforpickups.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910071852454_testfordates.cs" />
+    <Compile Include="Migrations\201910071852454_testfordates.Designer.cs">
+      <DependentUpon>201910071852454_testfordates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910071854099_Test2forDates.cs" />
+    <Compile Include="Migrations\201910071854099_Test2forDates.Designer.cs">
+      <DependentUpon>201910071854099_Test2forDates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910071855393_updateForDatesBackToOriginal.cs" />
+    <Compile Include="Migrations\201910071855393_updateForDatesBackToOriginal.Designer.cs">
+      <DependentUpon>201910071855393_updateForDatesBackToOriginal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910071939434_Testtry1.cs" />
+    <Compile Include="Migrations\201910071939434_Testtry1.Designer.cs">
+      <DependentUpon>201910071939434_Testtry1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -317,6 +333,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910071335155_addedbooleanforpickups.resx">
       <DependentUpon>201910071335155_addedbooleanforpickups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910071852454_testfordates.resx">
+      <DependentUpon>201910071852454_testfordates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910071854099_Test2forDates.resx">
+      <DependentUpon>201910071854099_Test2forDates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910071855393_updateForDatesBackToOriginal.resx">
+      <DependentUpon>201910071855393_updateForDatesBackToOriginal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910071939434_Testtry1.resx">
+      <DependentUpon>201910071939434_Testtry1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

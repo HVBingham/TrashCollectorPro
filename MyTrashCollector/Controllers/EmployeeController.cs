@@ -19,8 +19,9 @@ namespace MyTrashCollector.Controllers
         {
             var employeeId = User.Identity.GetUserId();
             Employee employee = context.Employees.Where(e => e.UserId == employeeId).SingleOrDefault();
-            var listOfDayCustomers = context.Customers.Where(c => c.ZipCode == employee.ZipCode && c.Day == DateTime.Today.DayOfWeek.ToString() && c.PickConfirmed == false);
-             return View(listOfDayCustomers);
+            var listOfDayCustomers = context.Customers.Where(c => c.ZipCode == employee.ZipCode && c.Day == DateTime.Today.DayOfWeek.ToString() && c.PickConfirmed == false && c.StartDay<=DateTime.Today.Date);
+            
+            return View(listOfDayCustomers);
         }
 
         // GET: Employee/Details/5

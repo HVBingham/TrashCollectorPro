@@ -28,11 +28,11 @@ namespace MyTrashCollector.Models
         [DisplayName("Chose A Day Of The Week")]
         public string Day { get; set; }
         [DisplayName ("Start Date for Pick-up")]
-        public string StartDay { get; set; }
+        public DateTime StartDay { get; set; }
         [DisplayName("End Date of Pick-ups")]
-        public string EndDate { get; set; }
+        public DateTime EndDate { get; set; }
         [DisplayName("Extra Added Pick-up")]
-        public string ExtraPick { get; set; }
+        public DateTime ExtraPick { get; set; }
         public double Balance { get; set; }
         public bool PickConfirmed { get; set; }
 
